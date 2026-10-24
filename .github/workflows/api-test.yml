@@ -1,4 +1,3 @@
-
 name: API Test - Newman CSV
 
 on:
@@ -29,9 +28,9 @@ jobs:
           GOREST_TOKEN: ${{ secrets.GOREST_TOKEN }}
         run: |
           test -n "$GOREST_TOKEN" || (echo "Missing GOREST_TOKEN secret" && exit 1)
-
-          newman run Collection.json \
-            -e Environment.json \
+          newman run "2373401010251_HuynhCongMinh_GoRest.postman_collection.json" \
+            -e "2373401010251_HuynhCongMinh_GoRest_Env.postman_environment.json" \
             -d users.csv \
             --env-var "token=$GOREST_TOKEN" \
+            --env-var "baseUrl=https://gorest.co.in/public/v2" \
             --reporters cli
